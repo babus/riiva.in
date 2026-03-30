@@ -1,0 +1,15 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archives (source fonts already extracted)
+*.zip
+
+# Node (if added later)
+node_modules/
