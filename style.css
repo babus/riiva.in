@@ -17,18 +17,13 @@
 
 :root {
   --bg: #0c0a08;
-  --surface: #110f0b;
-  --surface-2: #181510;
   --border: rgba(201, 169, 110, 0.1);
-  --border-light: rgba(201, 169, 110, 0.2);
   --text: #f5f0e8;
   --text-muted: #9a9082;
   --gold: #c9a96e;
   --gold-light: #e8d5a8;
   --gold-dark: #8b6914;
   --gold-bright: #ffd86e;
-  --gold-glow: rgba(201, 169, 110, 0.15);
-  --gold-glow-strong: rgba(201, 169, 110, 0.35);
   --serif: 'Cormorant Garamond', Georgia, serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -52,13 +47,6 @@ a {
   text-decoration: none;
 }
 
-i {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--gold);
-}
-
 ::selection {
   background: var(--gold);
   color: var(--bg);
@@ -69,15 +57,23 @@ i {
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(-45deg, #0c0a08, #1a1308, #2a1e0c, #1a1308, #0c0a08);
-  background-size: 800% 800%;
-  animation: gradientShift 10s ease infinite;
+  overflow: hidden;
+  background: #0c0a08;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.bg-gradient-inner {
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 40% 50%, #2a1e0c 0%, #1a1308 30%, #0c0a08 70%);
+  animation: bgDrift 10s ease-in-out infinite;
+}
+
+@keyframes bgDrift {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-10%, 5%); }
 }
 
 /* ===== Blobs (soft glow, no blur filter) ===== */
@@ -86,7 +82,6 @@ i {
   border-radius: 50%;
   pointer-events: none;
   z-index: 1;
-  will-change: transform;
   contain: layout style;
 }
 
@@ -146,12 +141,10 @@ i {
   position: absolute;
   width: 3px;
   height: 3px;
-  background: rgba(232, 213, 168, 0.6);
+  background: rgba(232, 213, 168, 0.7);
   border-radius: 50%;
-  box-shadow: 0 0 4px rgba(201, 169, 110, 0.4);
   animation: floatUp linear infinite;
   opacity: 0;
-  will-change: transform, opacity;
 }
 
 .particles span:nth-child(1) { left: 10%; animation-duration: 14s; animation-delay: 0s; }
@@ -160,9 +153,6 @@ i {
 .particles span:nth-child(4) { left: 58%; animation-duration: 13s; animation-delay: 1s; }
 .particles span:nth-child(5) { left: 75%; animation-duration: 11s; animation-delay: 3s; }
 .particles span:nth-child(6) { left: 90%; animation-duration: 15s; animation-delay: 5s; }
-
-/* Hide extra particle spans */
-.particles span:nth-child(n+7) { display: none; }
 
 @keyframes floatUp {
   0%   { transform: translateY(100vh) scale(0); opacity: 0; }
@@ -245,10 +235,9 @@ body:hover .cursor-glow {
   max-width: 580px;
   width: 100%;
   padding: 3.5rem 3rem;
-  background: linear-gradient(-45deg, #1a1308, #221a0a, #2a1e0c, #221a0a, #1a1308);
-  background-size: 800% 800%;
+  background: #1a1308;
   border: 1px solid rgba(201, 169, 110, 0.18);
-  animation: fadeUp 1s ease-out 0.6s both, gradientShift 10s ease infinite;
+  animation: fadeUp 1s ease-out 0.6s both;
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -256,20 +245,25 @@ body:hover .cursor-glow {
   text-align: center;
   box-shadow:
     0 8px 40px rgba(0, 0, 0, 0.35),
-    0 0 60px rgba(201, 169, 110, 0.04),
     inset 0 1px 0 rgba(232, 213, 168, 0.08);
   overflow: hidden;
 }
 
-/* Static glossy highlight instead of animated shine */
+/* Animated glossy glow using transform (GPU composited) */
 .glass-shine {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: linear-gradient(180deg, rgba(232, 213, 168, 0.04) 0%, transparent 100%);
+  top: -25%;
+  left: -25%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 60%);
   pointer-events: none;
+  animation: cardGlow 10s ease-in-out infinite;
+}
+
+@keyframes cardGlow {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(15%, -10%); }
 }
 
 /* ===== Eyebrow ===== */
@@ -485,7 +479,6 @@ body:hover .cursor-glow {
   white-space: nowrap;
   animation: marquee 30s linear infinite;
   width: max-content;
-  will-change: transform;
 }
 
 .marquee-track span {
@@ -568,18 +561,6 @@ body:hover .cursor-glow {
 }
 
 /* ===== Entrance Animations ===== */
-
-@keyframes gradientShiftReverse {
-  0% { background-position: 100% 100%; }
-  50% { background-position: 0% 0%; }
-  100% { background-position: 100% 100%; }
-}
-
-@keyframes cardShimmer {
-  0%   { background-position: 0% 0%; }
-  50%  { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
-}
 
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-15px); }
