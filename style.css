@@ -476,7 +476,10 @@ body:hover .cursor-glow {
   letter-spacing: 0.3em;
   padding-left: 0.3em;
   margin-bottom: 0.25rem;
-  animation: fadeDown 0.8s ease-out 0.2s both;
+  animation: fadeDown 0.8s ease-out 0.2s both, shimmer 8s linear infinite 1s;
+}
+
+.logo a {
   background: linear-gradient(
     90deg,
     #b38728 0%,
@@ -489,7 +492,7 @@ body:hover .cursor-glow {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeDown 0.8s ease-out 0.2s both, shimmer 8s linear infinite 1s;
+  text-decoration: none;
 }
 
 .logo-tagline {

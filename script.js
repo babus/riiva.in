@@ -87,9 +87,24 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       var btnText = e.target.querySelector('.btn-text');
       var input = e.target.querySelector('input');
-      var orig = btnText.textContent;
-      btnText.textContent = 'Thank you!';
-      setTimeout(function() { btnText.textContent = orig; input.value = ''; }, 3000);
+      var email = input.value.trim();
+      if (!email) return;
+
+      btnText.textContent = 'Sending...';
+
+      fetch('https://script.google.com/macros/s/AKfycbyGXzz_BbNIl5jklBm9QAQaguXgMDQq0tFwEOvWnglBYbIZfg1QvnQprnt1OpoJDq40/exec', {
+        method: 'POST',
+        body: JSON.stringify({ email: email })
+      })
+      .then(function() {
+        btnText.textContent = 'Thank you!';
+        input.value = '';
+        setTimeout(function() { btnText.textContent = 'Notify Me'; }, 3000);
+      })
+      .catch(function() {
+        btnText.textContent = 'Try again';
+        setTimeout(function() { btnText.textContent = 'Notify Me'; }, 3000);
+      });
     });
   }
 
