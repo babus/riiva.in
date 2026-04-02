@@ -76,6 +76,281 @@ a {
   50%      { transform: translate(-10%, 5%); }
 }
 
+/* ===== Background Stones ===== */
+.stones {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(6px);
+  overflow: hidden;
+  contain: layout style;
+}
+
+.stone {
+  position: absolute;
+  opacity: 0.35;
+  animation: stoneDrift 20s ease-in-out infinite;
+}
+
+/* Large amber — irregular pentagon */
+.stone-1 {
+  width: 130px;
+  height: 120px;
+  background: linear-gradient(145deg, #c2956a 0%, #8b5e3c 40%, #5a3a20 100%);
+  top: 3%;
+  left: 2%;
+  clip-path: polygon(18% 0%, 82% 8%, 100% 42%, 72% 100%, 3% 78%);
+  transform: rotate(-14deg);
+  animation-delay: 0s;
+  animation-duration: 22s;
+}
+
+/* Small turquoise — wonky triangle */
+.stone-2 {
+  width: 45px;
+  height: 50px;
+  background: linear-gradient(160deg, #5bb5a6 0%, #2e8b7a 45%, #1a5c50 100%);
+  top: 8%;
+  left: 14%;
+  clip-path: polygon(42% 0%, 100% 72%, 8% 100%);
+  transform: rotate(28deg);
+  animation-delay: -4s;
+  animation-duration: 18s;
+  opacity: 0.32;
+}
+
+/* Medium rose quartz — irregular hexagon */
+.stone-3 {
+  width: 100px;
+  height: 95px;
+  background: linear-gradient(130deg, #d4a0a0 0%, #b06060 50%, #7a3535 100%);
+  top: 6%;
+  right: 3%;
+  clip-path: polygon(30% 0%, 78% 5%, 100% 38%, 88% 90%, 22% 100%, 0% 55%);
+  transform: rotate(10deg);
+  animation-delay: -8s;
+  animation-duration: 25s;
+  opacity: 0.3;
+}
+
+/* Tiny golden chip */
+.stone-4 {
+  width: 35px;
+  height: 30px;
+  background: linear-gradient(170deg, #d4b86a 0%, #b8942e 50%, #7a6218 100%);
+  top: 22%;
+  left: 42%;
+  clip-path: polygon(15% 0%, 100% 12%, 85% 100%, 0% 80%);
+  transform: rotate(-32deg);
+  animation-delay: -12s;
+  animation-duration: 20s;
+  opacity: 0.38;
+}
+
+/* Large lapis — rough heptagon */
+.stone-5 {
+  width: 110px;
+  height: 115px;
+  background: linear-gradient(155deg, #7b8ec2 0%, #4a5f8a 50%, #2e3d5c 100%);
+  top: 38%;
+  left: 0%;
+  clip-path: polygon(22% 0%, 68% 3%, 100% 28%, 95% 70%, 65% 100%, 12% 88%, 0% 45%);
+  transform: rotate(-20deg);
+  animation-delay: -6s;
+  animation-duration: 24s;
+  opacity: 0.26;
+}
+
+/* Medium jade — irregular quad */
+.stone-6 {
+  width: 85px;
+  height: 80px;
+  background: linear-gradient(140deg, #a8c490 0%, #6b8f50 50%, #3d5c28 100%);
+  top: 42%;
+  right: 1%;
+  clip-path: polygon(10% 5%, 88% 0%, 100% 65%, 20% 100%);
+  transform: rotate(18deg);
+  animation-delay: -15s;
+  animation-duration: 21s;
+  opacity: 0.28;
+}
+
+/* Small amethyst — crooked pentagon */
+.stone-7 {
+  width: 55px;
+  height: 60px;
+  background: linear-gradient(165deg, #c9a0d4 0%, #8b5a9e 50%, #5c3570 100%);
+  top: 48%;
+  left: 38%;
+  clip-path: polygon(35% 0%, 100% 18%, 88% 85%, 10% 100%, 0% 40%);
+  transform: rotate(-45deg);
+  animation-delay: -10s;
+  animation-duration: 19s;
+  opacity: 0.24;
+}
+
+/* Large terracotta — chunky hexagon */
+.stone-8 {
+  width: 120px;
+  height: 110px;
+  background: linear-gradient(135deg, #c47a5a 0%, #9e5038 45%, #6b2e1e 100%);
+  bottom: 8%;
+  left: 1%;
+  clip-path: polygon(25% 0%, 80% 6%, 100% 45%, 75% 100%, 15% 92%, 0% 48%);
+  transform: rotate(14deg);
+  animation-delay: -3s;
+  animation-duration: 23s;
+  opacity: 0.28;
+}
+
+/* Tiny carnelian chip */
+.stone-9 {
+  width: 30px;
+  height: 35px;
+  background: linear-gradient(150deg, #e07040 0%, #b84820 60%, #802a10 100%);
+  top: 35%;
+  left: 52%;
+  clip-path: polygon(20% 0%, 100% 15%, 80% 100%, 0% 70%);
+  transform: rotate(55deg);
+  animation-delay: -7s;
+  animation-duration: 17s;
+  opacity: 0.35;
+}
+
+/* Medium malachite — lopsided pentagon */
+.stone-10 {
+  width: 90px;
+  height: 85px;
+  background: linear-gradient(125deg, #3db88c 0%, #1e7a58 50%, #0e4a32 100%);
+  bottom: 5%;
+  right: 5%;
+  clip-path: polygon(12% 8%, 72% 0%, 100% 35%, 82% 100%, 0% 75%);
+  transform: rotate(-25deg);
+  animation-delay: -14s;
+  animation-duration: 26s;
+  opacity: 0.25;
+}
+
+/* Small tiger-eye — irregular triangle */
+.stone-11 {
+  width: 40px;
+  height: 45px;
+  background: linear-gradient(160deg, #c49a3c 0%, #8a6a1e 50%, #5c4510 100%);
+  top: 62%;
+  left: 55%;
+  clip-path: polygon(50% 0%, 100% 80%, 5% 100%);
+  transform: rotate(-60deg);
+  animation-delay: -2s;
+  animation-duration: 16s;
+  opacity: 0.33;
+}
+
+/* Large smoky quartz — rough heptagon */
+.stone-12 {
+  width: 105px;
+  height: 100px;
+  background: linear-gradient(140deg, #8a7a6a 0%, #5c4e40 45%, #3a3028 100%);
+  bottom: 2%;
+  left: 35%;
+  clip-path: polygon(20% 5%, 58% 0%, 100% 22%, 92% 72%, 60% 100%, 8% 85%, 0% 38%);
+  transform: rotate(8deg);
+  animation-delay: -9s;
+  animation-duration: 22s;
+  opacity: 0.22;
+}
+
+/* Sunstone chip — center top */
+.stone-13 {
+  width: 50px;
+  height: 55px;
+  background: linear-gradient(135deg, #e8a060 0%, #c07030 50%, #884018 100%);
+  top: 12%;
+  left: 55%;
+  clip-path: polygon(22% 0%, 90% 10%, 100% 58%, 68% 100%, 0% 72%);
+  transform: rotate(38deg);
+  animation-delay: -5s;
+  animation-duration: 20s;
+  opacity: 0.3;
+}
+
+/* Obsidian shard — dead center */
+.stone-14 {
+  width: 75px;
+  height: 70px;
+  background: linear-gradient(150deg, #4a4540 0%, #2a2520 50%, #151210 100%);
+  top: 30%;
+  left: 45%;
+  clip-path: polygon(15% 0%, 70% 5%, 100% 32%, 85% 88%, 40% 100%, 0% 62%);
+  transform: rotate(-12deg);
+  animation-delay: -11s;
+  animation-duration: 23s;
+  opacity: 0.2;
+}
+
+/* Tiny rhodonite — center */
+.stone-15 {
+  width: 28px;
+  height: 32px;
+  background: linear-gradient(140deg, #d48a9a 0%, #a85868 50%, #703040 100%);
+  top: 58%;
+  left: 48%;
+  clip-path: polygon(30% 0%, 100% 20%, 82% 100%, 0% 85%);
+  transform: rotate(65deg);
+  animation-delay: -13s;
+  animation-duration: 15s;
+  opacity: 0.32;
+}
+
+/* Citrine chunk — center low */
+.stone-16 {
+  width: 65px;
+  height: 60px;
+  background: linear-gradient(155deg, #e8c840 0%, #c09a18 50%, #886a08 100%);
+  top: 72%;
+  left: 50%;
+  clip-path: polygon(18% 5%, 82% 0%, 100% 40%, 75% 100%, 5% 82%, 0% 30%);
+  transform: rotate(-28deg);
+  animation-delay: -1s;
+  animation-duration: 21s;
+  opacity: 0.22;
+}
+
+@keyframes stoneDrift {
+  0%, 100% { transform: translate(0, 0) rotate(var(--stone-rot, 0deg)); }
+  25%      { transform: translate(6px, -5px) rotate(calc(var(--stone-rot, 0deg) + 1.5deg)); }
+  50%      { transform: translate(-4px, 8px) rotate(calc(var(--stone-rot, 0deg) - 1deg)); }
+  75%      { transform: translate(5px, 3px) rotate(calc(var(--stone-rot, 0deg) + 0.5deg)); }
+}
+
+.stone-1  { --stone-rot: -14deg; }
+.stone-2  { --stone-rot: 28deg; }
+.stone-3  { --stone-rot: 10deg; }
+.stone-4  { --stone-rot: -32deg; }
+.stone-5  { --stone-rot: -20deg; }
+.stone-6  { --stone-rot: 18deg; }
+.stone-7  { --stone-rot: -45deg; }
+.stone-8  { --stone-rot: 14deg; }
+.stone-9  { --stone-rot: 55deg; }
+.stone-10 { --stone-rot: -25deg; }
+.stone-11 { --stone-rot: -60deg; }
+.stone-12 { --stone-rot: 8deg; }
+.stone-13 { --stone-rot: 38deg; }
+.stone-14 { --stone-rot: -12deg; }
+.stone-15 { --stone-rot: 65deg; }
+.stone-16 { --stone-rot: -28deg; }
+
+/* Responsive stones */
+@media (max-width: 768px) {
+  .stones { filter: blur(5px); }
+  .stone { transform: scale(0.75); }
+}
+
+@media (max-width: 480px) {
+  .stones { filter: blur(4px); }
+  .stone { transform: scale(0.55); }
+}
+
 /* ===== Blobs (soft glow, no blur filter) ===== */
 .blob {
   position: fixed;
