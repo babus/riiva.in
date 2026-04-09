@@ -476,7 +476,7 @@ body:hover .cursor-glow {
   letter-spacing: 0.3em;
   padding-left: 0.3em;
   margin-bottom: 0.25rem;
-  animation: fadeDown 0.8s ease-out 0.2s both, shimmer 8s linear infinite 1s;
+  animation: fadeDown 0.8s ease-out 0.2s both;
 }
 
 .logo a {
@@ -493,6 +493,7 @@ body:hover .cursor-glow {
   background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
+  animation: shimmer 8s linear infinite 1s;
 }
 
 .logo-tagline {
