@@ -21,65 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (glow) glow.style.display = 'none';
   }
 
-  // ===== Countdown =====
-  // April 15, 2026 00:00:00 IST = April 14, 2026 18:30:00 UTC
-  var launchTime = Date.UTC(2026, 3, 14, 18, 30, 0);
-
-  var dEl = document.getElementById('days');
-  var hEl = document.getElementById('hours');
-  var mEl = document.getElementById('minutes');
-  var sEl = document.getElementById('seconds');
-
-  function pad(n) { return n < 10 ? '0' + n : '' + n; }
-
-  function tick() {
-    var diff = launchTime - Date.now();
-    if (diff <= 0) {
-      dEl.textContent = '00';
-      hEl.textContent = '00';
-      mEl.textContent = '00';
-      sEl.textContent = '00';
-      return;
-    }
-    dEl.textContent = pad(Math.floor(diff / 86400000));
-    hEl.textContent = pad(Math.floor((diff / 3600000) % 24));
-    mEl.textContent = pad(Math.floor((diff / 60000) % 60));
-    sEl.textContent = pad(Math.floor((diff / 1000) % 60));
-  }
-
-  tick();
-  setInterval(tick, 1000);
-
-  // ===== Rotating Words =====
-  var rotateEl = document.getElementById('rotate-text');
-  var subtitleEl = document.getElementById('rotate-subtitle');
-
-  if (rotateEl && subtitleEl) {
-    var phrases = ['Coming Soon', 'Almost There', 'Stay Tuned'];
-    var subtitles = [
-      'Where timeless elegance meets you.',
-      'Something beautiful is on its way.',
-      'A new era of effortless beauty begins soon.'
-    ];
-    var phraseIndex = 0;
-    var rotating = false;
-
-    setInterval(function() {
-      if (rotating) return;
-      rotating = true;
-      rotateEl.style.opacity = '0';
-      subtitleEl.style.opacity = '0';
-      setTimeout(function() {
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        rotateEl.textContent = phrases[phraseIndex];
-        subtitleEl.textContent = subtitles[phraseIndex];
-        rotateEl.style.opacity = '1';
-        subtitleEl.style.opacity = '0.65';
-        rotating = false;
-      }, 800);
-    }, 5000);
-  }
-
   // ===== Email Form =====
   var form = document.getElementById('notify-form');
   if (form) {
@@ -99,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(function() {
         btnText.textContent = 'Thank you!';
         input.value = '';
-        setTimeout(function() { btnText.textContent = 'Notify Me'; }, 3000);
+        setTimeout(function() { btnText.textContent = 'Subscribe'; }, 3000);
       })
       .catch(function() {
         btnText.textContent = 'Try again';
-        setTimeout(function() { btnText.textContent = 'Notify Me'; }, 3000);
+        setTimeout(function() { btnText.textContent = 'Subscribe'; }, 3000);
       });
     });
   }
